@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="俄羅斯方塊輕量：七種方塊、消行升級、觸控按鍵。純前端 Playgrounds SAM。"
+    />
+    <title>俄羅斯方塊</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambiance" aria-hidden="true"></div>
+    <main>
+      <header class="hero">
+        <p class="eyebrow">街機</p>
+        <h1>俄羅斯方塊</h1>
+        <p class="tagline">七種方塊 · 消行升級 · 輕量版</p>
+      </header>
+
+      <section class="meter" aria-label="對局狀態">
+        <div class="meter-item"><span class="label">分數</span><strong id="score">0</strong></div>
+        <div class="meter-item"><span class="label">最佳</span><strong id="best">0</strong></div>
+        <div class="meter-item"><span class="label">消行</span><strong id="lines">0</strong></div>
+        <div class="meter-item"><span class="label">等級</span><strong id="level">1</strong></div>
+      </section>
+
+      <div class="controls top">
+        <button type="button" id="btn-start">開局</button>
+        <button type="button" id="btn-pause" class="secondary" disabled>暫停</button>
+        <button type="button" id="btn-mute" class="secondary" aria-pressed="true">音效</button>
+      </div>
+
+      <p id="status" class="status" role="status">按開局開始</p>
+
+      <div class="play-row">
+        <div class="stage">
+          <canvas id="game" width="240" height="480" aria-label="方塊盤面"></canvas>
+          <div id="pause-overlay" class="overlay" hidden role="button" tabindex="0" aria-label="已暫停，點擊繼續">
+            <p>已暫停<span class="overlay-hint">點此繼續</span></p>
+          </div>
+        </div>
+        <aside class="side">
+          <p class="side-label">下一個</p>
+          <canvas id="next" width="80" height="80" aria-label="下一個方塊"></canvas>
+          <p class="hint-side">↑／X 旋轉<br />空白硬降<br />P 暫停</p>
+        </aside>
+      </div>
+
+      <div class="pad" aria-label="觸控操作">
+        <button type="button" class="pad-btn" data-act="rotccw">↺</button>
+        <button type="button" class="pad-btn" data-act="rot">↻</button>
+        <button type="button" class="pad-btn" data-act="hard">硬降</button>
+        <button type="button" class="pad-btn" data-act="left">←</button>
+        <button type="button" class="pad-btn" data-act="soft">↓</button>
+        <button type="button" class="pad-btn" data-act="right">→</button>
+      </div>
+
+      <details class="rules">
+        <summary>怎麼玩</summary>
+        <ul>
+          <li>移動與旋轉方塊，填滿橫行即消除；連續消行分數更高。</li>
+          <li>等級隨消行上升，下落加快。名稱與手感致敬方塊類遊戲，非商業復刻。</li>
+        </ul>
+      </details>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
